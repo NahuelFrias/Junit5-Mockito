@@ -1,0 +1,38 @@
+package mockito;
+
+public class Add {
+    private ValidNumber validNumber;
+    private Print print;
+
+    public Add(ValidNumber validNumber) {
+        this.validNumber = validNumber;
+    }
+
+    public Add(ValidNumber validNumber, Print print) {
+        this.validNumber = validNumber;
+        this.print = print;
+    }
+
+    //dejamos que llegue cualquier tipo de objeto
+    //ValidNumber checkea si son enteros
+    public int add(Object a, Object b) {
+        if (validNumber.check(a) && validNumber.check(b)) {
+            return (Integer) a + (Integer) b;
+        } else {
+            return 0;
+        }
+    }
+
+    public int addDouble(Object a) {
+        return validNumber.doubleToInt(a) + validNumber.doubleToInt(a);
+    }
+
+    public void addPrint(Object a, Object b) {
+        if (validNumber.check(a) && validNumber.check(b)) {
+            int result = (Integer) a + (Integer) b;
+            print.showMessage(result);
+        } else {
+            print.Error();
+        }
+    }
+}
